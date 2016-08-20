@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "JWTableView"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "JWTableView--一款自用的表格控件，封装了一些基本功能"
 
   #主页
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #支持版本
   s.platform     = :ios, "7.1"
   #版本地址
-  s.source       = { :git => "https://github.com/junwangInChina/JWTableView.git", :tag => "0.0.2" }
+  s.source       = { :git => "https://github.com/junwangInChina/JWTableView.git", :tag => "0.0.3" }
 
   #库文件路径（相对于.podspec文件的路径）
   s.source_files  = "JWTableView/JWTableView/JWTableView/**/*.{h,m}"
