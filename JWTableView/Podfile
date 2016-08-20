@@ -1,0 +1,8 @@
+platform :ios, '7.1'
+inhibit_all_warnings!
+
+target:'JWTableView' do
+
+   pod 'Masonry'
+
+end
