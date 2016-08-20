@@ -8,7 +8,7 @@
 
 #import "JWTableLoadingView.h"
 
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 @interface JWTableLoadingView()
 
