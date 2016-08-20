@@ -8,7 +8,7 @@
 
 #import "JWTableViewCell.h"
 
-#import <Masonry.h>
+#import <Masonry/Masonry.h>
 
 @interface JWTableViewCell()
 
