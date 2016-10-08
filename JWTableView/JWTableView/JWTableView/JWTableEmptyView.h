@@ -10,7 +10,13 @@
 
 @interface JWTableEmptyView : UIView
 
+@property (nonatomic, copy) void(^emptyHandler)();
+
 - (void)configEmptyLog:(NSString *)emptyLog
                  image:(NSString *)imageName;
+
+- (void)configEmptyLog:(NSString *)emptyLog
+                 image:(NSString *)imageName
+          handlerTitle:(NSString *)handlerTitle;
 
 @end

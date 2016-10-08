@@ -105,6 +105,12 @@
     self.errorView.errorHandler = errorHandler;
 }
 
+- (void)setEmptyHandler:(JWTableEmptyLoadHandler)emptyHandler
+{
+    _emptyHandler = emptyHandler;
+    self.emptyView.emptyHandler = emptyHandler;
+}
+
 #pragma mark - Public Method
 - (void)configLoadingView:(JWTableLoadingView *)loadingView
                 emptyView:(JWTableEmptyView *)emptyView
@@ -136,6 +142,15 @@
 {
     [self.emptyView configEmptyLog:title
                              image:imageName];
+}
+
+- (void)configEmptyTitle:(NSString *)title
+                   image:(NSString *)imageName
+                 handler:(NSString *)handlerTitle
+{
+    [self.emptyView configEmptyLog:title
+                             image:imageName
+                      handlerTitle:handlerTitle];
 }
 
 - (void)configErrorTitle:(NSString *)title

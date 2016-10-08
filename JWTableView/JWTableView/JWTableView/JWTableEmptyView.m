@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UILabel *emptyLabel;
 @property (nonatomic, strong) UIImageView *emptyImageView;
+@property (nonatomic, strong) UIButton *emptyButton;
 
 @end
 
@@ -42,7 +43,10 @@
         make.bottom.equalTo(this.mas_centerY).with.offset(-20);
     }];
     
-    
+    [self.emptyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(this).with.insets(UIEdgeInsetsMake(0, 36, 29, 36));
+        make.height.equalTo(@44);
+    }];
 }
 
 #pragma mark - Lazy loading
@@ -73,9 +77,42 @@
     return _emptyImageView;
 }
 
+- (UIButton *)emptyButton
+{
+    if (!_emptyButton)
+    {
+        self.emptyButton = [UIButton new];
+        [_emptyButton setBackgroundColor:[UIColor colorWithRed:5.0/255.0 green:163.0/255.0 blue:236.0/255.0 alpha:1]];
+        [_emptyButton setTitle:@""
+                    forState:UIControlStateNormal];
+        [_emptyButton setTitleColor:[UIColor whiteColor]
+                         forState:UIControlStateNormal];
+        [_emptyButton setTitleColor:[UIColor lightGrayColor]
+                         forState:UIControlStateHighlighted];
+        _emptyButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        _emptyButton.layer.cornerRadius = 5;
+        _emptyButton.layer.masksToBounds = YES;
+        [_emptyButton addTarget:self
+                       action:@selector(emptyButtonAction:)
+             forControlEvents:UIControlEventTouchUpInside];
+        _emptyButton.hidden = YES;
+        [self addSubview:_emptyButton];
+    }
+    return _emptyButton;
+}
+
 #pragma mark - Public Method
 - (void)configEmptyLog:(NSString *)emptyLog
                  image:(NSString *)imageName
+{
+    [self configEmptyLog:emptyLog
+                   image:imageName
+            handlerTitle:nil];
+}
+
+- (void)configEmptyLog:(NSString *)emptyLog
+                 image:(NSString *)imageName
+          handlerTitle:(NSString *)handlerTitle
 {
     if (emptyLog.length > 0)
     {
@@ -85,6 +122,38 @@
     {
         self.emptyImageView.image = [UIImage imageNamed:imageName];
     }
+    if (handlerTitle.length > 0)
+    {
+        self.emptyButton.hidden = NO;
+        [self.emptyButton setTitle:handlerTitle
+                          forState:UIControlStateNormal];
+        
+        self.emptyLabel.textColor = [UIColor colorWithRed:44.0/255.0 green:101.0/255.0 blue:146.0/255.0 alpha:1];
+        
+        __weak __typeof(self)this = self;
+        [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(this);
+        }];
+        
+        [self.emptyImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(this);
+            make.bottom.equalTo(this.emptyLabel.mas_top).with.offset(-15);
+        }];
+        
+        [self.emptyButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(this);
+            make.top.equalTo(this.emptyLabel.mas_bottom).with.offset(25);
+            make.size.mas_equalTo(CGSizeMake(200, 44));
+        }];
+    }
 }
 
+#pragma mark - Helper
+- (void)emptyButtonAction:(id)sender
+{
+    if (self.emptyHandler)
+    {
+        self.emptyHandler();
+    }
+}
 @end

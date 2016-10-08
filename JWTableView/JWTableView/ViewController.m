@@ -59,7 +59,7 @@
         [_testTabView configZeroFootView];
         [_testTabView configCustomSeparator];
         [_testTabView configLoadingTitle:@"正在努力加载中..." image:@"JW_show"];
-        [_testTabView configEmptyTitle:@"没有数据哟" image:@"JW_show"];
+        [_testTabView configEmptyTitle:@"没有数据哟" image:@"JW_show" handler:@"一键保修"];
         [_testTabView configErrorTitle:@"请求失败了哦" image:@"JW_show"];
         
         [self.view addSubview:_testTabView];
@@ -72,6 +72,10 @@
         _testTabView.errorHandler = ^(){
             NSLog(@"点击重试了哦");
             [this.testTabView setStateViewShow:YES withState:JWTableViewStateLoading];
+        };
+        
+        _testTabView.emptyHandler = ^(){
+            NSLog(@"点击一键报修了哦");
         };
     }
     return _testTabView;
@@ -107,7 +111,7 @@
         }
         else
         {
-            [this.testTabView setStateViewShow:YES withState:JWTableViewStateError];
+            [this.testTabView setStateViewShow:YES withState:JWTableViewStateEmpty];
         }
     }];
 }
