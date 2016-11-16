@@ -147,6 +147,16 @@
 - (void)configEmptyTitle:(NSString *)title
                    image:(NSString *)imageName
                  handler:(NSString *)handlerTitle
+{
+    [self.emptyView configEmptyLog:title
+                             image:imageName
+                      handlerTitle:handlerTitle
+                      centerInView:NO];
+}
+
+- (void)configEmptyTitle:(NSString *)title
+                   image:(NSString *)imageName
+                 handler:(NSString *)handlerTitle
             centerInView:(BOOL)centerInView
 {
     [self.emptyView configEmptyLog:title

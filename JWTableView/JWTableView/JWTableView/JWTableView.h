@@ -75,6 +75,18 @@ typedef void(^JWTableEmptyLoadHandler)();
  */
 - (void)configEmptyTitle:(NSString *)title
                    image:(NSString *)imageName
+                 handler:(NSString *)handlerTitle;
+
+/**
+ *  配置默认EmptyView的数据
+ *
+ *  @param title        EmptyView的Title
+ *  @param imageName    EmptyView的图片
+ *  @param handlerTitle EmptyView的触发回调按钮标题
+ *  @param centerInView 是否展示到中心
+ */
+- (void)configEmptyTitle:(NSString *)title
+                   image:(NSString *)imageName
                  handler:(NSString *)handlerTitle
             centerInView:(BOOL)centerInView;
 
