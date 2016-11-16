@@ -47,7 +47,7 @@
     
     [self.errorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(this);
-        make.bottom.equalTo(this.mas_centerY).with.offset(-20);
+        make.top.equalTo(this.errorImageView.mas_bottom).with.offset(88/3);
     }];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self

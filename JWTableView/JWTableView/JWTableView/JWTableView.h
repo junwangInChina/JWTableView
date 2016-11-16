@@ -75,7 +75,15 @@ typedef void(^JWTableEmptyLoadHandler)();
  */
 - (void)configEmptyTitle:(NSString *)title
                    image:(NSString *)imageName
-                 handler:(NSString *)handlerTitle;
+                 handler:(NSString *)handlerTitle
+            centerInView:(BOOL)centerInView;
+
+/**
+ *  是否隐藏空页面下的按钮，体验机定制需求
+ *
+ *  @param hidden 是否隐藏
+ */
+- (void)configEmptyHandlerHidden:(BOOL)hidden;
 
 /**
  *  配置默认ErrorView的数据

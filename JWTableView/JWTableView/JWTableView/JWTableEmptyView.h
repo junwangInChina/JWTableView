@@ -17,6 +17,9 @@
 
 - (void)configEmptyLog:(NSString *)emptyLog
                  image:(NSString *)imageName
-          handlerTitle:(NSString *)handlerTitle;
+          handlerTitle:(NSString *)handlerTitle
+          centerInView:(BOOL)centerInView;
+
+- (void)configHandlerHidden:(BOOL)hidden;
 
 @end

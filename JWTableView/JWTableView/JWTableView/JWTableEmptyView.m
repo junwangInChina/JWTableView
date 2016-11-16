@@ -40,12 +40,12 @@
     
     [self.emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(this);
-        make.bottom.equalTo(this.mas_centerY).with.offset(-20);
+        make.top.equalTo(this.emptyImageView.mas_bottom).with.offset(88/3);
     }];
     
     [self.emptyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(this).with.insets(UIEdgeInsetsMake(0, 36, 29, 36));
-        make.height.equalTo(@44);
+        make.height.equalTo(@0);
     }];
 }
 
@@ -87,7 +87,7 @@
                     forState:UIControlStateNormal];
         [_emptyButton setTitleColor:[UIColor whiteColor]
                          forState:UIControlStateNormal];
-        [_emptyButton setTitleColor:[UIColor lightGrayColor]
+        [_emptyButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]
                          forState:UIControlStateHighlighted];
         _emptyButton.titleLabel.font = [UIFont systemFontOfSize:14];
         _emptyButton.layer.cornerRadius = 5;
@@ -105,14 +105,20 @@
 - (void)configEmptyLog:(NSString *)emptyLog
                  image:(NSString *)imageName
 {
-    [self configEmptyLog:emptyLog
-                   image:imageName
-            handlerTitle:nil];
+    if (emptyLog.length > 0)
+    {
+        self.emptyLabel.text = emptyLog;
+    }
+    if (imageName.length > 0)
+    {
+        self.emptyImageView.image = [UIImage imageNamed:imageName];
+    }
 }
 
 - (void)configEmptyLog:(NSString *)emptyLog
                  image:(NSString *)imageName
           handlerTitle:(NSString *)handlerTitle
+          centerInView:(BOOL)centerInView
 {
     if (emptyLog.length > 0)
     {
@@ -146,6 +152,39 @@
             make.size.mas_equalTo(CGSizeMake(200, 44));
         }];
     }
+    else
+    {
+        __weak __typeof(self)this = self;
+        if (centerInView)
+        {
+            [self.emptyImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(this);
+                make.bottom.equalTo(this.mas_centerY).with.offset(10);
+            }];
+            
+            [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(this);
+                make.top.equalTo(this.emptyImageView.mas_bottom).with.offset(10);
+            }];
+        }
+        else
+        {
+            [self.emptyImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(this);
+                make.bottom.equalTo(this.emptyLabel.mas_top).with.offset(-0);
+            }];
+            
+            [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(this);
+                make.centerY.equalTo(this).with.multipliedBy((720/1611.0)+1);
+            }];
+        }
+    }
+}
+
+- (void)configHandlerHidden:(BOOL)hidden
+{
+    self.emptyButton.hidden = hidden;
 }
 
 #pragma mark - Helper

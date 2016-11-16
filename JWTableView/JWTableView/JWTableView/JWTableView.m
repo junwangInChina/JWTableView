@@ -147,10 +147,17 @@
 - (void)configEmptyTitle:(NSString *)title
                    image:(NSString *)imageName
                  handler:(NSString *)handlerTitle
+            centerInView:(BOOL)centerInView
 {
     [self.emptyView configEmptyLog:title
                              image:imageName
-                      handlerTitle:handlerTitle];
+                      handlerTitle:handlerTitle
+                      centerInView:centerInView];
+}
+
+- (void)configEmptyHandlerHidden:(BOOL)hidden
+{
+    [self.emptyView configHandlerHidden:hidden];
 }
 
 - (void)configErrorTitle:(NSString *)title
