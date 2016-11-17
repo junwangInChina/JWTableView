@@ -123,18 +123,19 @@
     if (emptyLog.length > 0)
     {
         self.emptyLabel.text = emptyLog;
+        self.emptyLabel.textColor = [UIColor colorWithRed:44.0/255.0 green:101.0/255.0 blue:146.0/255.0 alpha:1];
     }
     if (imageName.length > 0)
     {
         self.emptyImageView.image = [UIImage imageNamed:imageName];
     }
+    
     if (handlerTitle.length > 0)
     {
         self.emptyButton.hidden = NO;
         [self.emptyButton setTitle:handlerTitle
                           forState:UIControlStateNormal];
         
-        self.emptyLabel.textColor = [UIColor colorWithRed:44.0/255.0 green:101.0/255.0 blue:146.0/255.0 alpha:1];
         
         __weak __typeof(self)this = self;
         [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
