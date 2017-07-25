@@ -12,14 +12,11 @@
 
 @property (nonatomic, copy) void(^emptyHandler)();
 
-- (void)configEmptyLog:(NSString *)emptyLog
-                 image:(NSString *)imageName;
+- (void)configEmptyLog:(NSString *)emptyLog;
 
 - (void)configEmptyLog:(NSString *)emptyLog
-                 image:(NSString *)imageName
-          handlerTitle:(NSString *)handlerTitle
-          centerInView:(BOOL)centerInView;
+            emptyImage:(NSString *)imageName
+          emptyHandler:(NSString *)emptyHandler;
 
-- (void)configHandlerHidden:(BOOL)hidden;
 
 @end

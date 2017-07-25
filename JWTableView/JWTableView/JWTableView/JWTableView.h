@@ -63,8 +63,7 @@ typedef void(^JWTableEmptyLoadHandler)();
  *  @param title     EmptyView的Title
  *  @param imageName EmptyView的图片
  */
-- (void)configEmptyTitle:(NSString *)title
-                   image:(NSString *)imageName;
+- (void)configEmptyTitle:(NSString *)title;
 
 /**
  *  配置默认EmptyView的数据
@@ -78,33 +77,14 @@ typedef void(^JWTableEmptyLoadHandler)();
                  handler:(NSString *)handlerTitle;
 
 /**
- *  配置默认EmptyView的数据
- *
- *  @param title        EmptyView的Title
- *  @param imageName    EmptyView的图片
- *  @param handlerTitle EmptyView的触发回调按钮标题
- *  @param centerInView 是否展示到中心
- */
-- (void)configEmptyTitle:(NSString *)title
-                   image:(NSString *)imageName
-                 handler:(NSString *)handlerTitle
-            centerInView:(BOOL)centerInView;
-
-/**
- *  是否隐藏空页面下的按钮，体验机定制需求
- *
- *  @param hidden 是否隐藏
- */
-- (void)configEmptyHandlerHidden:(BOOL)hidden;
-
-/**
  *  配置默认ErrorView的数据
  *
  *  @param title     ErrorView的Title
  *  @param imageName ErrorView的图片
  */
 - (void)configErrorTitle:(NSString *)title
-                   image:(NSString *)imageName;
+                   image:(NSString *)imageName
+                 handler:(NSString *)handlerTitle;
 
 /**
  *  设置表格展示状态View

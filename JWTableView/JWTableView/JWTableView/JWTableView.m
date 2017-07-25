@@ -138,10 +138,8 @@
 }
 
 - (void)configEmptyTitle:(NSString *)title
-                   image:(NSString *)imageName
 {
-    [self.emptyView configEmptyLog:title
-                             image:imageName];
+    [self.emptyView configEmptyLog:title];
 }
 
 - (void)configEmptyTitle:(NSString *)title
@@ -149,32 +147,17 @@
                  handler:(NSString *)handlerTitle
 {
     [self.emptyView configEmptyLog:title
-                             image:imageName
-                      handlerTitle:handlerTitle
-                      centerInView:NO];
-}
-
-- (void)configEmptyTitle:(NSString *)title
-                   image:(NSString *)imageName
-                 handler:(NSString *)handlerTitle
-            centerInView:(BOOL)centerInView
-{
-    [self.emptyView configEmptyLog:title
-                             image:imageName
-                      handlerTitle:handlerTitle
-                      centerInView:centerInView];
-}
-
-- (void)configEmptyHandlerHidden:(BOOL)hidden
-{
-    [self.emptyView configHandlerHidden:hidden];
+                        emptyImage:imageName
+                      emptyHandler:handlerTitle];
 }
 
 - (void)configErrorTitle:(NSString *)title
                    image:(NSString *)imageName
+                 handler:(NSString *)handlerTitle
 {
     [self.errorView configErrorLog:title
-                             image:imageName];
+                        errorImage:imageName
+                      errorHandler:handlerTitle];
 }
 
 - (void)configZeroFootView

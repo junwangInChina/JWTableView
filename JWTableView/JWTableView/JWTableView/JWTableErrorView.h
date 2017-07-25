@@ -13,6 +13,7 @@
 @property (nonatomic, copy) void(^errorHandler)();
 
 - (void)configErrorLog:(NSString *)errorLog
-                 image:(NSString *)imageName;
+            errorImage:(NSString *)imageName
+          errorHandler:(NSString *)errorHandler;
 
 @end

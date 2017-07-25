@@ -8,6 +8,8 @@
 
 #import "JWTableEmptyView.h"
 
+#import "JWTableViewDefine.h"
+
 #import <Masonry/Masonry.h>
 
 @interface JWTableEmptyView()
@@ -35,17 +37,18 @@
     __weak __typeof(self)this = self;
     [self.emptyImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(this);
-        make.centerY.equalTo(this).with.multipliedBy(0.5);
+        make.top.equalTo(this).with.offset(JW_HEIGHT_TRANSF(415.0/3));
     }];
     
     [self.emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(this);
-        make.top.equalTo(this.emptyImageView.mas_bottom).with.offset(88/3);
+        make.top.equalTo(this).with.offset(JW_HEIGHT_TRANSF(705.0/3));
     }];
     
     [self.emptyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(this).with.insets(UIEdgeInsetsMake(0, 36, 29, 36));
-        make.height.equalTo(@0);
+        make.centerX.equalTo(this);
+        make.top.equalTo(this).with.offset(JW_HEIGHT_TRANSF(860.0/3));
+        make.size.mas_equalTo(CGSizeMake(800.0/3, 50));
     }];
 }
 
@@ -57,9 +60,9 @@
         self.emptyLabel = [UILabel new];
         _emptyLabel.textAlignment = NSTextAlignmentCenter;
         _emptyLabel.backgroundColor = self.backgroundColor;
-        _emptyLabel.font = [UIFont systemFontOfSize:15];
+        _emptyLabel.font = [UIFont fontWithName:@"Arial" size:14];
         _emptyLabel.numberOfLines = 0;
-        _emptyLabel.textColor = [UIColor lightGrayColor];
+        _emptyLabel.textColor = [UIColor colorWithRed:74/255.0 green:76/255.0 blue:91/255.0 alpha:1.0];
         _emptyLabel.text = @"暂无数据";
         [self addSubview:_emptyLabel];
     }
@@ -82,19 +85,15 @@
     if (!_emptyButton)
     {
         self.emptyButton = [UIButton new];
-        [_emptyButton setBackgroundColor:[UIColor colorWithRed:5.0/255.0 green:163.0/255.0 blue:236.0/255.0 alpha:1]];
-        [_emptyButton setTitle:@""
-                    forState:UIControlStateNormal];
+        [_emptyButton setBackgroundColor:[UIColor colorWithRed:74/255.0 green:76/255.0 blue:91/255.0 alpha:1.0]];
         [_emptyButton setTitleColor:[UIColor whiteColor]
-                         forState:UIControlStateNormal];
-        [_emptyButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]
-                         forState:UIControlStateHighlighted];
-        _emptyButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        _emptyButton.layer.cornerRadius = 5;
+                           forState:UIControlStateNormal];
+        _emptyButton.titleLabel.font = [UIFont fontWithName:@"Arial" size:16];
+        _emptyButton.layer.cornerRadius = 2;
         _emptyButton.layer.masksToBounds = YES;
         [_emptyButton addTarget:self
-                       action:@selector(emptyButtonAction:)
-             forControlEvents:UIControlEventTouchUpInside];
+                         action:@selector(emptyAction:)
+               forControlEvents:UIControlEventTouchUpInside];
         _emptyButton.hidden = YES;
         [self addSubview:_emptyButton];
     }
@@ -103,97 +102,41 @@
 
 #pragma mark - Public Method
 - (void)configEmptyLog:(NSString *)emptyLog
-                 image:(NSString *)imageName
 {
     if (emptyLog.length > 0)
     {
         self.emptyLabel.text = emptyLog;
-    }
-    if (imageName.length > 0)
-    {
-        self.emptyImageView.image = [UIImage imageNamed:imageName];
+        
+        __weak __typeof(self)this = self;        
+        [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(this);
+            make.top.equalTo(this).with.offset(JW_HEIGHT_TRANSF(30));
+        }];
     }
 }
 
 - (void)configEmptyLog:(NSString *)emptyLog
-                 image:(NSString *)imageName
-          handlerTitle:(NSString *)handlerTitle
-          centerInView:(BOOL)centerInView
+            emptyImage:(NSString *)imageName
+          emptyHandler:(NSString *)emptyHandler
 {
     if (emptyLog.length > 0)
     {
         self.emptyLabel.text = emptyLog;
-        self.emptyLabel.textColor = [UIColor colorWithRed:44.0/255.0 green:101.0/255.0 blue:146.0/255.0 alpha:1];
     }
     if (imageName.length > 0)
     {
         self.emptyImageView.image = [UIImage imageNamed:imageName];
     }
-    
-    if (handlerTitle.length > 0)
+    if (emptyHandler.length > 0)
     {
         self.emptyButton.hidden = NO;
-        [self.emptyButton setTitle:handlerTitle
-                          forState:UIControlStateNormal];
-        
-        
-        __weak __typeof(self)this = self;
-        [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.center.equalTo(this);
-        }];
-        
-        [self.emptyImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(this);
-            make.bottom.equalTo(this.emptyLabel.mas_top).with.offset(-15);
-        }];
-        
-        [self.emptyButton mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(this);
-            make.top.equalTo(this.emptyLabel.mas_bottom).with.offset(25);
-            make.size.mas_equalTo(CGSizeMake(200, 44));
-        }];
+        [self.emptyButton setTitle:emptyHandler forState:UIControlStateNormal];
     }
-    else
-    {
-        __weak __typeof(self)this = self;
-        if (centerInView)
-        {
-            [self.emptyImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(this);
-                make.bottom.equalTo(this.mas_centerY).with.offset(10);
-            }];
-            
-            [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(this);
-                make.top.equalTo(this.emptyImageView.mas_bottom).with.offset(10);
-            }];
-        }
-        else
-        {
-            [self.emptyImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(this);
-                make.bottom.equalTo(this.emptyLabel.mas_top).with.offset(-0);
-            }];
-            
-            [self.emptyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.centerX.equalTo(this);
-                make.centerY.equalTo(this).with.multipliedBy((720/1611.0)+1);
-            }];
-        }
-    }
-}
-
-- (void)configHandlerHidden:(BOOL)hidden
-{
-    self.emptyButton.hidden = hidden;
 }
 
 #pragma mark - Helper
-- (void)emptyButtonAction:(id)sender
+- (void)emptyAction:(id)sender
 {
-    if (self.emptyHandler)
-    {
-        self.emptyHandler();
-    }
+    !self.emptyHandler?:self.emptyHandler();
 }
 @end
