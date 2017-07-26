@@ -42,12 +42,12 @@
     
     [self.emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(this);
-        make.top.equalTo(this).with.offset(JW_HEIGHT_TRANSF(705.0/3));
+        make.top.equalTo(this.emptyImageView.mas_bottom).with.offset(JW_HEIGHT_TRANSF(45.0/3));
     }];
     
     [self.emptyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(this);
-        make.top.equalTo(this).with.offset(JW_HEIGHT_TRANSF(860.0/3));
+        make.top.equalTo(this.emptyLabel.mas_bottom).with.offset(JW_HEIGHT_TRANSF(110.0/3));
         make.size.mas_equalTo(CGSizeMake(800.0/3, 50));
     }];
 }
