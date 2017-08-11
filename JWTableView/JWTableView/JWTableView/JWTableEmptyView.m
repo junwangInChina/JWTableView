@@ -132,6 +132,10 @@
         self.emptyButton.hidden = NO;
         [self.emptyButton setTitle:emptyHandler forState:UIControlStateNormal];
     }
+    else
+    {
+        self.emptyButton.hidden = YES;
+    }
 }
 
 #pragma mark - Helper
