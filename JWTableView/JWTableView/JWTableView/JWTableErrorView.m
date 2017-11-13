@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UILabel *errorLabel;
 @property (nonatomic, strong) UIImageView *errorImageView;
 @property (nonatomic, strong) UIButton *errorButton;
+@property (nonatomic, strong) UITapGestureRecognizer *errorTapGesture;
 
 @end
 
@@ -125,10 +126,29 @@
     {
         self.errorButton.hidden = NO;
         [self.errorButton setTitle:errorHandler forState:UIControlStateNormal];
+        
+        [self removeGestureRecognizer:self.errorTapGesture];
+    }
+    else
+    {
+        self.errorButton.hidden = YES;
+        
+        [self configGesture];
     }
 }
 
-#pragma mark - Action Event
+#pragma mark - Helper
+- (void)configGesture
+{
+    self.errorTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self addGestureRecognizer:_errorTapGesture];
+}
+
+- (void)tapAction:(id)sender
+{
+    !self.errorHandler?:self.errorHandler();
+}
+
 - (void)errorAction:(id)sender
 {
     !self.errorHandler?:self.errorHandler();
