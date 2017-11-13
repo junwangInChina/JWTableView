@@ -37,6 +37,8 @@
     if (self)
     {
         [self setupUI];
+        
+        [self configGesture];
     }
     return self;
 }
@@ -132,8 +134,6 @@
     else
     {
         self.errorButton.hidden = YES;
-        
-        [self configGesture];
     }
 }
 

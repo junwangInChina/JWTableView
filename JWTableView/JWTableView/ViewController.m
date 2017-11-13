@@ -60,7 +60,7 @@
         [_testTabView configCustomSeparator];
         [_testTabView configLoadingTitle:@"正在努力加载中..." image:@"JW_show"];
         [_testTabView configEmptyTitle:@"没有数据哟" image:@"JW_show" handler:@"一键保修"];
-        [_testTabView configErrorTitle:@"请求失败了哦" image:@"JW_show"];
+        [_testTabView configErrorTitle:@"请求失败了哦" image:@"JW_show" handler:@""];
         
         [self.view addSubview:_testTabView];
         
@@ -111,7 +111,7 @@
         }
         else
         {
-            [this.testTabView setStateViewShow:YES withState:JWTableViewStateEmpty];
+            [this.testTabView setStateViewShow:YES withState:JWTableViewStateError];
         }
     }];
 }
