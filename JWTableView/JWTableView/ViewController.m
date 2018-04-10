@@ -39,6 +39,8 @@
     self.testArray = @[];
     
     [self reloadTableView];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,12 +56,13 @@
         self.testTabView = [[JWTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _testTabView.delegate = self;
         _testTabView.dataSource = self;
-        _testTabView.backgroundColor = [UIColor whiteColor];
+        _testTabView.backgroundColor = self.view.backgroundColor;
         [_testTabView registerClass:[JWTableViewCell class] forCellReuseIdentifier:@"cellIdentifier"];
         [_testTabView configZeroFootView];
         [_testTabView configCustomSeparator];
+        _testTabView.emptyTopMargin = 10;
         [_testTabView configLoadingTitle:@"正在努力加载中..." image:@"JW_show"];
-        [_testTabView configEmptyTitle:@"没有数据哟" image:@"JW_show" handler:@"一键保修"];
+        [_testTabView configEmptyTitle:@"没有数据哟" image:@"JW_show" handler:@"一键报修"];
         [_testTabView configErrorTitle:@"请求失败了哦" image:@"JW_show" handler:@""];
         
         [self.view addSubview:_testTabView];
@@ -111,7 +114,7 @@
         }
         else
         {
-            [this.testTabView setStateViewShow:YES withState:JWTableViewStateError];
+            [this.testTabView setStateViewShow:YES withState:JWTableViewStateEmpty];
         }
     }];
 }

@@ -128,6 +128,7 @@
     {
         self.errorView = errorView;
     }
+    self.emptyTopMargin = 0;
 }
 
 - (void)configLoadingTitle:(NSString *)title
@@ -239,10 +240,11 @@
         
         __weak __typeof(self)weakSelf = self;
         [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(weakSelf).with.insets(UIEdgeInsetsZero);
-            make.size.equalTo(weakSelf);
+            make.left.bottom.right.equalTo(weakSelf);
+            make.top.equalTo(weakSelf).with.offset(weakSelf.emptyTopMargin);
+            make.size.mas_equalTo(CGSizeMake(weakSelf.frame.size.width,
+                                             weakSelf.frame.size.height - weakSelf.emptyTopMargin));
         }];
-        
         self.scrollEnabled = NO;
     }
 }
