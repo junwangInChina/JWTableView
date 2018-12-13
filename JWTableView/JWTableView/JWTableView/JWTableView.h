@@ -24,12 +24,12 @@ typedef NS_ENUM(NSInteger, JWTableViewState) {
 /**
  *  表格加载失败，点击触发重新加载的block
  */
-typedef void(^JWTableErrorLoadHandler)();
+typedef void(^JWTableErrorLoadHandler)(void);
 
 /**
  *  数据为空，点击触发的block
  */
-typedef void(^JWTableEmptyLoadHandler)();
+typedef void(^JWTableEmptyLoadHandler)(void);
 
 @interface JWTableView : UITableView
 
@@ -65,16 +65,15 @@ typedef void(^JWTableEmptyLoadHandler)();
  *  配置默认EmptyView的数据
  *
  *  @param title     EmptyView的Title
- *  @param imageName EmptyView的图片
  */
 - (void)configEmptyTitle:(NSString *)title;
 
 /**
  *  配置默认EmptyView的数据
  *
- *  @param title     EmptyView的Title
- *  @param imageName EmptyView的图片
- *  @param handler   EmptyView的触发回调按钮标题
+ *  @param title          EmptyView的Title
+ *  @param imageName      EmptyView的图片
+ *  @param handlerTitle   EmptyView的触发回调按钮标题
  */
 - (void)configEmptyTitle:(NSString *)title
                    image:(NSString *)imageName
@@ -83,8 +82,9 @@ typedef void(^JWTableEmptyLoadHandler)();
 /**
  *  配置默认ErrorView的数据
  *
- *  @param title     ErrorView的Title
- *  @param imageName ErrorView的图片
+ *  @param title          ErrorView的Title
+ *  @param imageName      ErrorView的图片
+ *  @param handlerTitle   ErrorView的触发回调按钮标题
  */
 - (void)configErrorTitle:(NSString *)title
                    image:(NSString *)imageName

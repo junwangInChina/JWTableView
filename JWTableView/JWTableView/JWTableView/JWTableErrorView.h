@@ -10,7 +10,7 @@
 
 @interface JWTableErrorView : UIView
 
-@property (nonatomic, copy) void(^errorHandler)();
+@property (nonatomic, copy) void(^errorHandler)(void);
 
 - (void)configErrorLog:(NSString *)errorLog
             errorImage:(NSString *)imageName
