@@ -215,8 +215,10 @@
         
         __weak __typeof(self)weakSelf = self;
         [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(weakSelf).with.insets(UIEdgeInsetsZero);
-            make.size.equalTo(weakSelf);
+            make.left.bottom.right.equalTo(weakSelf);
+            make.top.equalTo(weakSelf).with.offset(weakSelf.loadingTopMargin);
+            make.size.mas_equalTo(CGSizeMake(weakSelf.frame.size.width,
+                                             weakSelf.frame.size.height - weakSelf.loadingTopMargin));
         }];
         
         self.scrollEnabled = NO;
@@ -266,8 +268,10 @@
         
         __weak __typeof(self)weakSelf = self;
         [self.errorView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(weakSelf).with.insets(UIEdgeInsetsZero);
-            make.size.equalTo(weakSelf);
+            make.left.bottom.right.equalTo(weakSelf);
+            make.top.equalTo(weakSelf).with.offset(weakSelf.errorTopMargin);
+            make.size.mas_equalTo(CGSizeMake(weakSelf.frame.size.width,
+                                             weakSelf.frame.size.height - weakSelf.errorTopMargin));
         }];
         
         self.scrollEnabled = NO;

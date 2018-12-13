@@ -38,6 +38,8 @@ typedef void(^JWTableEmptyLoadHandler)();
 @property (nonatomic, copy) JWTableEmptyLoadHandler emptyHandler;
 
 @property (nonatomic, assign) CGFloat emptyTopMargin;
+@property (nonatomic, assign) CGFloat errorTopMargin;
+@property (nonatomic, assign) CGFloat loadingTopMargin;
 
 /**
  *  配置自定义的三种状态View，需要继承JWTableLoadingView、JWTableEmptyView、JWTableErrorView
