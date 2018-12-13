@@ -210,7 +210,7 @@
     }
     if (self.loadingView)
     {
-        self.loadingView.backgroundColor = self.backgroundColor;
+        self.loadingView.backgroundColor = self.loadingBgColor != nil ? self.loadingBgColor : self.backgroundColor;
         [self addSubview:self.loadingView];
         
         __weak __typeof(self)weakSelf = self;
@@ -237,7 +237,7 @@
     }
     if (self.emptyView)
     {
-        self.emptyView.backgroundColor = self.backgroundColor;
+        self.emptyView.backgroundColor = self.emptyBgColor != nil ? self.emptyBgColor : self.backgroundColor;
         [self addSubview:self.emptyView];
         
         __weak __typeof(self)weakSelf = self;
@@ -263,7 +263,7 @@
     }
     if (self.errorView)
     {
-        self.errorView.backgroundColor = self.backgroundColor;
+        self.errorView.backgroundColor = self.errorBgColor != nil ? self.errorBgColor : self.backgroundColor;
         [self addSubview:self.errorView];
         
         __weak __typeof(self)weakSelf = self;

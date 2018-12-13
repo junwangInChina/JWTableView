@@ -61,6 +61,7 @@
         [_testTabView configZeroFootView];
         [_testTabView configCustomSeparator];
         _testTabView.emptyTopMargin = 10;
+        _testTabView.emptyBgColor = [UIColor greenColor];
         [_testTabView configLoadingTitle:@"正在努力加载中..." image:@"JW_show"];
         [_testTabView configEmptyTitle:@"没有数据哟" image:@"JW_show" handler:@"一键报修"];
         [_testTabView configErrorTitle:@"请求失败了哦" image:@"JW_show" handler:@""];

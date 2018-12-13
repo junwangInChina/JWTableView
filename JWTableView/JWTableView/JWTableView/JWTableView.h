@@ -40,6 +40,9 @@ typedef void(^JWTableEmptyLoadHandler)(void);
 @property (nonatomic, assign) CGFloat emptyTopMargin;
 @property (nonatomic, assign) CGFloat errorTopMargin;
 @property (nonatomic, assign) CGFloat loadingTopMargin;
+@property (nonatomic, strong) UIColor *emptyBgColor;
+@property (nonatomic, strong) UIColor *errorBgColor;
+@property (nonatomic, strong) UIColor *loadingBgColor;
 
 /**
  *  配置自定义的三种状态View，需要继承JWTableLoadingView、JWTableEmptyView、JWTableErrorView
