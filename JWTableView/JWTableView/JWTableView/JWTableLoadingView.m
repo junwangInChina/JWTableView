@@ -64,7 +64,7 @@
     {
         self.loadingLabel = [UILabel new];
         _loadingLabel.textAlignment = NSTextAlignmentLeft;
-        _loadingLabel.backgroundColor = self.backgroundColor;
+        _loadingLabel.backgroundColor = [UIColor clearColor];
         _loadingLabel.font = [UIFont fontWithName:@"Arial" size:14];
         _loadingLabel.numberOfLines = 0;
         _loadingLabel.textColor = [UIColor colorWithRed:74/255.0 green:76/255.0 blue:91/255.0 alpha:1.0];
@@ -79,7 +79,7 @@
     if (!_loadingImageView)
     {
         self.loadingImageView = [UIImageView new];
-        _loadingImageView.backgroundColor = self.backgroundColor;
+        _loadingImageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_loadingImageView];
     }
     return _loadingImageView;

@@ -59,7 +59,7 @@
     {
         self.emptyLabel = [UILabel new];
         _emptyLabel.textAlignment = NSTextAlignmentCenter;
-        _emptyLabel.backgroundColor = self.backgroundColor;
+        _emptyLabel.backgroundColor = [UIColor clearColor];
         _emptyLabel.font = [UIFont fontWithName:@"Arial" size:14];
         _emptyLabel.numberOfLines = 0;
         _emptyLabel.textColor = [UIColor colorWithRed:74/255.0 green:76/255.0 blue:91/255.0 alpha:1.0];
@@ -74,7 +74,7 @@
     if (!_emptyImageView)
     {
         self.emptyImageView = [UIImageView new];
-        _emptyImageView.backgroundColor = self.backgroundColor;
+        _emptyImageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_emptyImageView];
     }
     return _emptyImageView;

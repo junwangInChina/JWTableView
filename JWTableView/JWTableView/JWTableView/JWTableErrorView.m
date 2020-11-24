@@ -70,7 +70,7 @@
     {
         self.errorLabel = [UILabel new];
         _errorLabel.textAlignment = NSTextAlignmentCenter;
-        _errorLabel.backgroundColor = self.backgroundColor;
+        _errorLabel.backgroundColor = [UIColor clearColor];
         _errorLabel.font = [UIFont fontWithName:@"Arial" size:14];
         _errorLabel.numberOfLines = 0;
         _errorLabel.textColor = [UIColor colorWithRed:74/255.0 green:76/255.0 blue:91/255.0 alpha:1.0];
@@ -85,7 +85,7 @@
     if (!_errorImageView)
     {
         self.errorImageView = [UIImageView new];
-        _errorImageView.backgroundColor = self.backgroundColor;
+        _errorImageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_errorImageView];
     }
     return _errorImageView;

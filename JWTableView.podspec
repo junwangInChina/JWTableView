@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "JWTableView"
-  s.version      = "0.1.8"
+  s.version      = "0.1.9"
   s.summary      = "JWTableView--一款自用的表格控件，封装了一些基本功能"
 
   #主页
